@@ -1,0 +1,25 @@
+{%extends 'base.html'%} {%block body%}
+
+<table border="1" cellspacing="0" class=" table table-striped mt-5">
+  <tr>
+    <th>Employee id</th>
+    <th>Employee name</th>
+    <th>Employee salary</th>
+    <th>Employee department</th>
+    <th colspan="2">Modify here</th>
+  </tr>
+  {%for e in emps%} <tr>
+    <td>{{e.empid}}</td>
+    <td>{{e.empname}}</td>
+    <td>{{e.empsalary}}</td>
+    <td>{{e.department.deptname}}</td>
+    <td><a href="{% url 'updateurl' e.empid %}">Update</a></td>
+    <td><a href="{% url 'deleteurl' e.empid %}">❌</a></td>
+  </tr> {%endfor%}
+</table>
+<div class="d-flex justify-content-center">
+  <a href="{% url 'inserturl' %}" class="btn btn-success m-5  w-25">ADD Employee</a>
+
+</div>
+
+{%endblock%}

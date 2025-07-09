@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+
+{%block body%}
+    <form action="" method="post" class="container d-flex justify-content-center flex-column align-items-center mt-5">
+        {%csrf_token%}
+        <div class="w-25 m-2"><label for="" class="form-label">Employee id</label><input type="text" class="form-control"  name="eid" readonly value="{{emp.empid}}"></div>
+        <div class="w-25 m-2"><label for="" class="form-label">Employee Name</label><input type="text" class="form-control"  name="ename" value="{{emp.empname}}"></div>
+        <div class="w-25 m-2"><label for="" class="form-label">Employee Salary</label><input type="text" class="form-control"  name="esal" value="{{emp.empsalary}}"></div>
+        <div class="w-25 m-2">
+            <select name="dept" id="" class="form-select">
+                {%for d in depts%}
+                    {%if emp.department.deptid == d.deptid%}
+                        <option value="{{d.deptid}}" selected>{{d.deptname}}</option>
+                    {%else%}
+                        <option value="{{d.deptid}}">{{d.deptname}}</option>
+                    {%endif%}
+                {%endfor%}
+            </select>
+        </div>
+        <input type="submit" value="Update" class="btn btn-success w-25">
+    </form>
+{%endblock%}
